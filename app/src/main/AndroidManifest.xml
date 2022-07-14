@@ -17,6 +17,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppScheduler">
+
+        <service
+            android:name=".service.MyIntentService"
+            android:enabled="true"
+            android:stopWithTask="false" />
+
+        <activity
+            android:name=".scheduledTaskModule.view.ScheduledTaskActivity"
+            android:exported="false" />
         <activity
             android:name=".installedAppModule.view.InstalledAppActivity"
             android:exported="false" />

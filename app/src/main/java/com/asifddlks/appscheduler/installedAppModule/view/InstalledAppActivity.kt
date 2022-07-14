@@ -6,11 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import com.asifddlks.appscheduler.databinding.ActivityInstalledAppBinding
+import com.asifddlks.appscheduler.installedAppModule.contractor.InstalledAppViewInterface
 import com.asifddlks.appscheduler.installedAppModule.viewModel.InstalledAppViewModel
 import com.asifddlks.appscheduler.utility.ViewModelFactory
-import com.tvl.stockx.investingTabModule.contractor.InstalledAppViewInterface
 
-class InstalledAppActivity : AppCompatActivity(),InstalledAppViewInterface {
+class InstalledAppActivity : AppCompatActivity(), InstalledAppViewInterface {
 
     private lateinit var binding: ActivityInstalledAppBinding
     private val viewModel by viewModels<InstalledAppViewModel> { ViewModelFactory(this, application, this) }

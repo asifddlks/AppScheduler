@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.asifddlks.appscheduler.installedAppModule.view.InstalledAppActivity
 import com.asifddlks.appscheduler.databinding.ActivityMainBinding
+import com.asifddlks.appscheduler.scheduledTaskModule.view.ScheduledTaskActivity
 
 
 class MainActivity : AppCompatActivity() {
@@ -17,6 +18,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        startActivity(Intent(this,InstalledAppActivity::class.java))
+        //startActivity(Intent(this,InstalledAppActivity::class.java))
+        startActivity(Intent(this,ScheduledTaskActivity::class.java))
+        finish()
     }
 }

@@ -6,7 +6,9 @@
         <entry key="../../../../asifahmed/AsifAhmed/AndroidStudioProjects/AppScheduler/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="../../../../asifahmed/AsifAhmed/AndroidStudioProjects/AppScheduler/app/src/main/res/layout/activity_installed_app.xml" value="0.2828125" />
         <entry key="../../../../asifahmed/AsifAhmed/AndroidStudioProjects/AppScheduler/app/src/main/res/layout/activity_main.xml" value="0.15419548714515002" />
+        <entry key="../../../../asifahmed/AsifAhmed/AndroidStudioProjects/AppScheduler/app/src/main/res/layout/activity_scheduled_task.xml" value="0.26875" />
         <entry key="../../../../asifahmed/AsifAhmed/AndroidStudioProjects/AppScheduler/app/src/main/res/layout/item_installed_app.xml" value="0.2828125" />
+        <entry key="../../../../asifahmed/AsifAhmed/AndroidStudioProjects/AppScheduler/app/src/main/res/layout/item_scheduled_task.xml" value="0.375" />
       </map>
     </option>
   </component>

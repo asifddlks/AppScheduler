@@ -6,8 +6,10 @@ import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
+import com.asifddlks.appscheduler.installedAppModule.contractor.InstalledAppViewInterface
 import com.asifddlks.appscheduler.installedAppModule.viewModel.InstalledAppViewModel
-import com.tvl.stockx.investingTabModule.contractor.InstalledAppViewInterface
+import com.asifddlks.appscheduler.scheduledTaskModule.contractor.ScheduledTaskViewInterface
+import com.asifddlks.appscheduler.scheduledTaskModule.viewModel.ScheduledTaskViewModel
 
 //
 // Created by Asif Ahmed on 13/7/22.
@@ -29,6 +31,9 @@ class ViewModelFactory constructor(
         when {
             isAssignableFrom(InstalledAppViewModel::class.java) -> {
                 InstalledAppViewModel(viewInterface as InstalledAppViewInterface)
+            }
+            isAssignableFrom(ScheduledTaskViewModel::class.java) -> {
+                ScheduledTaskViewModel(viewInterface as ScheduledTaskViewInterface)
             }
             else ->
                 throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
