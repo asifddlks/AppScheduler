@@ -7,6 +7,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import com.asifddlks.appscheduler.databinding.ActivityInstalledAppBinding
 import com.asifddlks.appscheduler.installedAppModule.contractor.InstalledAppViewInterface
+import com.asifddlks.appscheduler.installedAppModule.model.AppModel
 import com.asifddlks.appscheduler.installedAppModule.viewModel.InstalledAppViewModel
 import com.asifddlks.appscheduler.utility.ViewModelFactory
 
@@ -29,8 +30,8 @@ class InstalledAppActivity : AppCompatActivity(), InstalledAppViewInterface {
     private fun initRecyclerView() {
         installedAppAdapter = InstalledAppAdapter(viewModel.appList,object :
             InstalledAppAdapter.ItemInterface{
-            override fun onItemClick(launcherIntent: Intent?) {
-                launcherIntent?.let {
+            override fun onItemClick(appModel: AppModel) {
+                appModel.launcherIntent?.let {
                     startActivity(it)
                 }
             }

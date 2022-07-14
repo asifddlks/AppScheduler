@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.asifddlks.appscheduler.databinding.ActivityScheduledTaskBinding
+import com.asifddlks.appscheduler.installedAppModule.model.AppModel
 import com.asifddlks.appscheduler.scheduledTaskModule.contractor.ScheduledTaskViewInterface
 import com.asifddlks.appscheduler.scheduledTaskModule.viewModel.ScheduledTaskViewModel
 import com.asifddlks.appscheduler.utility.*
@@ -43,7 +44,12 @@ class ScheduledTaskActivity : AppCompatActivity(), ScheduledTaskViewInterface {
 
     private fun initListeners() {
         binding.floatingActionAddButton.setOnClickListener {
-            scheduleAlarm("test")
+            CustomBottomSheetDialog(this).showInstalledApp(object :
+                CustomBottomSheetDialog.InstalledAppInterface {
+                override fun onItemClick(appModel: AppModel) {
+                    scheduleAlarm("test")
+                }
+            })
         }
     }
 

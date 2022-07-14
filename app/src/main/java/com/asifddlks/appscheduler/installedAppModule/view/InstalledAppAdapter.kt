@@ -41,7 +41,7 @@ class InstalledAppAdapter(
         holder.binding.imageViewAppIcon.setImageDrawable(dataList[position].appIcon)
 
         holder.itemView.setOnClickListener {
-            itemInterface.onItemClick(dataList[position].launcherIntent)
+            itemInterface.onItemClick(dataList[position])
         }
     }
 
@@ -55,6 +55,6 @@ class InstalledAppAdapter(
         RecyclerView.ViewHolder(binding.root)
 
     interface ItemInterface {
-        fun onItemClick(launcherIntent:Intent?)
+        fun onItemClick(appModel: AppModel)
     }
 }
