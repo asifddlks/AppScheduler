@@ -7,36 +7,38 @@ import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import com.asifddlks.appscheduler.service.MyIntentService
 
 object MyAlarmManager {
 
-    private var pendingIntent: PendingIntent? = null
-
-    fun setAlarm(context: Context, alarmTime: Long, message: String) {
+    fun setAlarmByID(context: Context, alarmTime: Long, id: String) {
         val alarmManager: AlarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-
-        val intent = Intent(context, MyIntentService::class.java)
-        intent.action = MyIntentService.ACTION_SEND_TEST_MESSAGE
-        intent.putExtra(MyIntentService.EXTRA_MESSAGE, message)
-
-        //pendingIntent = PendingIntent.getService(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
-
-        var pendingIntent: PendingIntent? = null
-        pendingIntent = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            PendingIntent.getService(context, 0, intent, PendingIntent.FLAG_MUTABLE)
-        } else {
-            PendingIntent.getService(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
-        }
-        alarmManager.set(AlarmManager.RTC_WAKEUP, alarmTime, pendingIntent)
+        alarmManager.set(AlarmManager.RTC_WAKEUP, alarmTime, createPendingIntent(context,id))
     }
 
-    fun cancelAlarm(context: Context) {
-        pendingIntent?.let {
+    fun cancelAlarmByID(context: Context, id:String) {
+        createPendingIntent(context,id).let {
             val alarmManager: AlarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
             alarmManager.cancel(it)
         }
+    }
+
+    private fun createPendingIntent(context: Context, id:String):PendingIntent{
+        val alarmIntent = Intent(context, MyIntentService::class.java)
+        alarmIntent.action = MyIntentService.ACTION_SEND
+        //intent.putExtra(MyIntentService.EXTRA_MESSAGE, message)
+        alarmIntent.data = Uri.parse("alarmID://$id")
+
+        //pendingIntent = PendingIntent.getService(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+
+        var pendingIntent = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            PendingIntent.getService(context, 0, alarmIntent, PendingIntent.FLAG_MUTABLE)
+        } else {
+            PendingIntent.getService(context, 0, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT)
+        }
+        return pendingIntent
     }
 
 }
